@@ -28,70 +28,134 @@ const ThoughtsPage = ({ setCurrentPage, currentPage }) => {
           {/* mb-16 for spacing before gallery */}
           {/* Left Column Content */}
           <div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-100">
-              My relationship with photography
-            </h2>
+            <h2 className="text-3xl font-bold mb-6 text-gray-100">RxCare</h2>
             <p className="text-lg leading-relaxed mb-4">
-              When I was 4 years old my grandfather gave me my first camera. He
-              was an avid hobby photographer and collector of quirky Soviet-era
-              cameras. The camera he gave me was a Kodak Pocket Instamatic which
-              used this really funky cartridge-loaded 110 film. I took a lot of
-              really bad photos.
+              Neonatal seizures are a silent threat in places like Ghana, often
+              missed due to a critical lack of specialized diagnostic tools. My
+              team and I, from a tech perspective, recognize this as a solvable
+              challenge. Our initial research meticulously investigates the
+              problem, surveys existing technological limitations, and outlines
+              a robust framework for a novel, affordable, and non-invasive
+              wearable seizure detection system for newborns. The paper isn't
+              about already proven results, but about laying the groundwork –
+              identifying the right sensors, the optimal TinyML approaches, and
+              the necessary hardware/software architecture – to build a
+              high-potential solution. We believe this foundational work
+              provides a clear and viable path to developing a proof-of-concept,
+              and subsequently a working product, that can revolutionize
+              neonatal care. Next step: building and validating this promising
+              technology, with the ultimate vision of significantly improving
+              child health outcomes and strengthening healthcare infrastructure
+              in low-resource settings.
             </p>
             <h2 className="text-3xl font-bold mb-6 text-gray-100 mt-8">
-              Looking around
+              Open-Source Intelligence (OSINT): Capabilities and Applications
             </h2>
             <p className="text-lg leading-relaxed">
-              Although I indeed took some terrible photos at first, I think
-              having my own camera so early in life had a big impact on me. It
-              made me conscious about my surroundings and perhaps even fed my
-              life-long curiosity for the world around me. Looking up is fun and
-              can reveal a whole new world, even in a place where you've been
-              walking a hundred times.
+              At its core, OSINT leverages publicly accessible information
+              platforms including, but not limited to, social media, news
+              archives, academic publications, government reports, financial
+              disclosures, geospatial data, and deep web forums. OSINT's
+              applications are vast and extend across intelligence, law
+              enforcement, cybersecurity, journalism, business development, and
+              academic research. Its power lies in its ethical
+              foundation—relying exclusively on data intended for public
+              consumption—and its capacity to provide timely, cost-effective,
+              and often critical insights that inform strategic decisions and
+              enhance situational awareness. As the digital landscape continues
+              to expand, the methodologies and capabilities of OSINT remain
+              indispensable for navigating and understanding complex information
+              environments.
             </p>
           </div>
           {/* Right Column Content */}
           <div>
             <h2 className="text-3xl font-bold mb-6 text-gray-100">
-              People & time
+              The Inevitable Dawn: Adapting to an AI-Integrated Future
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              Really, at the core of what intrigues me about photography are
-              people and time. Photography is the closest thing we've got to
-              time travel I think. Not only can photography capture a moment in
-              time, later to be recalled, but photography has this magical way
-              of allowing the recorder—the photographer—to create a picture that
-              paints a moment in time in the way you experienced it, the way you
-              felt about that moment.
+              The rapid ascent of Artificial Intelligence from a niche
+              technological pursuit to a pervasive force in daily life is
+              undeniable. What was once the stuff of science fiction is now
+              woven into the fabric of our existence, from the algorithms that
+              curate our online experiences to the sophisticated tools enhancing
+              productivity in every industry. This isn't a fleeting trend; AI is
+              inevitably here to stay, fundamentally reshaping our interactions
+              with information, work, and creativity. Its permanence is etched
+              in the efficiencies it unlocks, the innovations it sparks, and its
+              seamless integration into the digital infrastructure that
+              underpins modern society. This profound shift demands more than
+              just passive observation; it necessitates a proactive
+              re-evaluation of the status quo. The traditional paradigms that
+              once defined success, learning, and problem-solving are rapidly
+              becoming obsolete. In an era where AI can generate text, analyze
+              complex data, and even create art, the value of simple information
+              recall or repetitive tasks diminishes. We are compelled to seek
+              new ways to challenge ourselves and our established systems,
+              focusing on uniquely human capabilities that AI, for all its
+              prowess, cannot replicate. Central to this new frontier is the
+              emerging skill of prompting. No longer is it sufficient to merely
+              ask a question; the ability to craft precise, insightful, and
+              strategic prompts to guide AI models is becoming a critical
+              differentiator.
             </p>
             <p className="text-lg leading-relaxed">
-              Good photography to me tells some sort of story. It could be very
-              obvious as in showing someone doing something or an important
-              event, but often the "story" part is hidden and faint, the sort of
-              story that you don't yet have words for in your mind but you know
-              so well. A feeling or a state of mind.
+              The adoption of AI is not a threat to human ingenuity, but a
+              powerful catalyst for its evolution. By embracing its
+              inevitability and consciously seeking new ways to challenge our
+              established norms, particularly in how we learn and how we prompt
+              these powerful tools, we can ensure that humanity remains at the
+              helm of progress, steering towards a future where intelligence,
+              both artificial and human, thrives in synergy.
             </p>
           </div>
           {/* Right Column Content */}
           <div>
             <h2 className="text-3xl font-bold mb-6 text-gray-100">
-              People & time
+              A Song of Ice and Fire:
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              Really, at the core of what intrigues me about photography are
-              people and time. Photography is the closest thing we've got to
-              time travel I think. Not only can photography capture a moment in
-              time, later to be recalled, but photography has this magical way
-              of allowing the recorder—the photographer—to create a picture that
-              paints a moment in time in the way you experienced it, the way you
-              felt about that moment.
+              George R.R. Martin's A Song of Ice and Fire is not merely a
+              fantasy saga; it is a brutal, unflinching deconstruction of power,
+              morality, and the devastating consequences of human ambition.
+              Within its sprawling, meticulously crafted tapestry of warring
+              houses, ancient magic, and existential threats, the series
+              resonates most profoundly through its relentless subversion of
+              traditional heroic narratives. It is a world where virtue is often
+              punished, and the most honorable intentions can pave the road to
+              ruin.
             </p>
             <p className="text-lg leading-relaxed">
-              Good photography to me tells some sort of story. It could be very
-              obvious as in showing someone doing something or an important
-              event, but often the "story" part is hidden and faint, the sort of
-              story that you don't yet have words for in your mind but you know
-              so well. A feeling or a state of mind.
+              Here's a powerful brief on George R.R. Martin's A Song of Ice and
+              Fire, with a particular resonance to Robb Stark: A Song of Ice and
+              Fire: The Crushing Weight of Ideals in a World of Pragmatism
+              George R.R. Martin's A Song of Ice and Fire is not merely a
+              fantasy saga; it is a brutal, unflinching deconstruction of power,
+              morality, and the devastating consequences of human ambition.
+              Within its sprawling, meticulously crafted tapestry of warring
+              houses, ancient magic, and existential threats, the series
+              resonates most profoundly through its relentless subversion of
+              traditional heroic narratives. It is a world where virtue is often
+              punished, and the most honorable intentions can pave the road to
+              ruin. Nowhere is this tragic resonance more acutely felt than in
+              the arc of Robb Stark, the Young Wolf. Thrust into leadership by
+              his father's unjust execution, Robb embodies the archetypal noble
+              hero: courageous, charismatic, and fiercely loyal. He rallies the
+              North, wins impossible victories, and inspires unwavering
+              devotion. Yet, his story becomes a searing indictment of how
+              traditional chivalry and a rigid adherence to oaths can be fatal
+              flaws in a game utterly devoid of rules. Robb's fatal error is not
+              a lack of military prowess or moral compass, but his inability to
+              shed the idealism of his upbringing in a realm governed by
+              treachery, broken promises, and the cold, hard calculus of power.
+              His adherence to personal honor, his compassion, and his youthful
+              belief in justice ultimately become the very vulnerabilities
+              exploited by his cunning, ruthless adversaries. The Red Wedding, a
+              moment of unparalleled shock and despair, serves as the series'
+              most visceral testament to the brutal truth: in Westeros, the song
+              of ice and fire is often a dirge for those who play by rules that
+              no longer exist, leaving only ashes where noble intentions once
+              burned bright.
             </p>
           </div>
         </section>
