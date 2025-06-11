@@ -18,6 +18,10 @@ const Cart = ({ setCurrentPage, currentPage, cart, setCart }) => {
     );
   };
 
+  const removeItem = (itemId) => {
+    setCart(cart.filter((item) => item.id !== itemId));
+  };
+
   const total = cart
     .reduce((sum, item) => sum + item.price * item.quantity, 0)
     .toFixed(2);
@@ -52,14 +56,14 @@ const Cart = ({ setCurrentPage, currentPage, cart, setCart }) => {
                   <p className="text-sm text-gray-700">
                     ${item.price.toFixed(2)}
                   </p>
-                  <div className="flex items-center mt-2">
+                  <div className="flex items-center mt-2 space-x-2">
                     <button
                       onClick={() => updateQuantity(item.id, -1)}
                       className="px-2 py-1 bg-gray-100 text-gray-900 text-sm rounded-md border-none cursor-pointer hover:bg-gray-200"
                     >
                       -
                     </button>
-                    <span className="mx-2 text-sm text-gray-900">
+                    <span className="text-sm text-gray-900">
                       {item.quantity}
                     </span>
                     <button
@@ -67,6 +71,12 @@ const Cart = ({ setCurrentPage, currentPage, cart, setCart }) => {
                       className="px-2 py-1 bg-gray-100 text-gray-900 text-sm rounded-md border-none cursor-pointer hover:bg-gray-200"
                     >
                       +
+                    </button>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className="px-2 py-1 bg-gray-100 text-gray-900 text-sm rounded-md border-none cursor-pointer hover:bg-gray-200"
+                    >
+                      Remove
                     </button>
                   </div>
                 </div>
@@ -87,3 +97,4 @@ const Cart = ({ setCurrentPage, currentPage, cart, setCart }) => {
 
 export default Cart;
 // This code defines a Cart component that displays the user's shopping cart.
+// It allows users to update item quantities, remove items, and view the total price.
