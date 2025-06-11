@@ -15,7 +15,18 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
   }, [currentPage]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    const existingItem = cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
     alert(`${product.name} added to cart!`);
   };
 
@@ -24,7 +35,7 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
       <PageHeader
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
-        cartCount={cart.length}
+        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
       />
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-row gap-4 justify-center mt-4">
@@ -32,9 +43,9 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
             href="#support"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
+            className="inline-flex px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
           >
-            <p className="text-base font-medium text-gray-900 flex items-center justify-end">
+            <p className="text-lg font-medium text-gray-900 flex items-center justify-end">
               Support me directly
               <span className="ml-2">→</span>
             </p>
@@ -43,9 +54,9 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
             href="#register"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
+            className="inline-flex px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
           >
-            <p className="text-base font-medium text-gray-900 flex items-center justify-end">
+            <p className="text-lg font-medium text-gray-900 flex items-center justify-end">
               Register for a course
               <span className="ml-2">→</span>
             </p>
@@ -56,7 +67,7 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
             Shop My Products
           </h2>
           <p className="text-sm text-gray-700 mb-4">
-            Items in cart: {cart.length}
+            Items in cart: {cart.reduce((sum, item) => sum + item.quantity, 0)}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.length === 0 ? (
