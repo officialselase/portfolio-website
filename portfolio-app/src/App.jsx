@@ -6,6 +6,7 @@ import Projects from "./pages/Projects.jsx";
 import Work from "./pages/Work.jsx";
 import ThoughtsPage from "./pages/ThoughtsPage.jsx";
 import Shop from "./pages/Shop.jsx";
+import Cart from "./pages/Cart.jsx";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -17,10 +18,11 @@ const App = () => {
       "work",
       "thoughts",
       "shop",
+      "cart",
     ];
     return validPages.includes(hash) ? hash : "home";
   });
-  const [cart, setCart] = useState([]); // Initialize cart state
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     window.location.hash = currentPage;
@@ -36,6 +38,7 @@ const App = () => {
         "work",
         "thoughts",
         "shop",
+        "cart",
       ];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
@@ -78,6 +81,15 @@ const App = () => {
       case "shop":
         return (
           <Shop
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            cart={cart}
+            setCart={setCart}
+          />
+        );
+      case "cart":
+        return (
+          <Cart
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
             cart={cart}
