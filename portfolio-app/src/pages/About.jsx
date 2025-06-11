@@ -131,22 +131,30 @@ const About = ({ setCurrentPage, currentPage }) => {
         <div className="mt-16 pt-8 border-t border-gray-300 grid grid-cols-1 md:grid-cols-3 gap-12 text-lg">
           {/* This website */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4">This website</h2>
+            <h2 className="text-2xl font-semibold mb-4">Developer/Teacher</h2>
             <p>
-              This website is very simple, built primarily in React, tailwind
-              css. It’s hosted by Github and distributed globally by Cloudflare.
+              <p className="mt-4">
+                Things I enjoy developing: Web apps, Mobile apps, <br /> Design
+                Tools: Pen & Paper, Flutter, FlutterFlow, VScode, PyCharm,
+                Android Studio, Git, Docker, Vite{" "}
+              </p>
             </p>
             <p className="mt-4">
-              Colors on this website makes use of random colors to produce rich,
-              deep colors on supported displays.{" "}
-              <a
-                onClick={() => setCurrentPage("home")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-600 hover:underline"
-              >
-                Go back Home &rarr;
-              </a>
+              Languages I Speak: Html, CSS, JavaScript, Python,
+              Node.js(JavaScript runtime), Dart, SQL{" "}
+            </p>
+
+            <p className="mt-4">
+              Frameworks & Libraries: React, Django, Flutter{" "}
+            </p>
+
+            <p className="mt-4">
+              I am a believer in collaborative exchange of ideas, driven by deep
+              passion for teaching. Sharing knowledge and best practices
+              strengthens our collective capabilities. It's about building
+              supportive communities where everyone feels empowered to learn and
+              contribute. I am committed to helping the next generation of tech
+              talent.{" "}
             </p>
           </div>
 

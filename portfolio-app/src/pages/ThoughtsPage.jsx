@@ -76,28 +76,28 @@ const ThoughtsPage = ({ setCurrentPage, currentPage }) => {
             <p className="text-lg leading-relaxed mb-4">
               The rapid ascent of Artificial Intelligence from a niche
               technological pursuit to a pervasive force in daily life is
-              undeniable. What was once the stuff of science fiction is now
-              woven into the fabric of our existence, from the algorithms that
-              curate our online experiences to the sophisticated tools enhancing
-              productivity in every industry. This isn't a fleeting trend; AI is
-              inevitably here to stay, fundamentally reshaping our interactions
-              with information, work, and creativity. Its permanence is etched
-              in the efficiencies it unlocks, the innovations it sparks, and its
-              seamless integration into the digital infrastructure that
-              underpins modern society. This profound shift demands more than
-              just passive observation; it necessitates a proactive
-              re-evaluation of the status quo. The traditional paradigms that
-              once defined success, learning, and problem-solving are rapidly
-              becoming obsolete. In an era where AI can generate text, analyze
-              complex data, and even create art, the value of simple information
-              recall or repetitive tasks diminishes. We are compelled to seek
-              new ways to challenge ourselves and our established systems,
-              focusing on uniquely human capabilities that AI, for all its
-              prowess, cannot replicate. Central to this new frontier is the
-              emerging skill of prompting. No longer is it sufficient to merely
-              ask a question; the ability to craft precise, insightful, and
-              strategic prompts to guide AI models is becoming a critical
-              differentiator.
+              undeniable. What was once the stuff of science fiction movies is
+              now woven into the fabric of our existence, from the algorithms
+              that curate our online experiences to the sophisticated tools
+              enhancing productivity in every industry. This isn't a fleeting
+              trend; AI is inevitably here to stay, fundamentally reshaping our
+              interactions with INFORMATION, work, and creativity. Its
+              permanence is etched in the efficiencies it unlocks, the
+              innovations it sparks, and its seamless integration into the
+              digital infrastructure that underpins modern society. This
+              profound shift demands more than just passive observation; it
+              necessitates a proactive re-evaluation of the status quo. The
+              traditional paradigms that once defined success, learning, and
+              problem-solving as we know it are rapidly becoming obsolete. In an
+              era where AI can generate text, analyze complex data, and even
+              create art, the value of simple information recall or repetitive
+              tasks diminishes. We are compelled to seek new ways to challenge
+              ourselves and our established systems, focusing on uniquely human
+              capabilities that AI, for all its prowess, cannot replicate.
+              Central to this new frontier is the emerging skill of prompting.
+              No longer is it sufficient to merely ask a question; the ability
+              to craft precise, insightful, and strategic prompts to guide AI
+              models is becoming a critical differentiator.
             </p>
             <p className="text-lg leading-relaxed">
               The adoption of AI is not a threat to human ingenuity, but a
@@ -115,22 +115,21 @@ const ThoughtsPage = ({ setCurrentPage, currentPage }) => {
               A Song of Ice and Fire:
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              George R.R. Martin's A Song of Ice and Fire is not merely a
-              fantasy saga; it is a brutal, unflinching deconstruction of power,
-              morality, and the devastating consequences of human ambition.
-              Within its sprawling, meticulously crafted tapestry of warring
-              houses, ancient magic, and existential threats, the series
-              resonates most profoundly through its relentless subversion of
-              traditional heroic narratives. It is a world where virtue is often
-              punished, and the most honorable intentions can pave the road to
-              ruin.
+              George R.R. Martin's A Song of Ice and Fire is a world that has
+              saved me countless times. Disappearing into that vast world
+              provides me with such a sense of wonder and awe.George R.R.
+              Martin's A Song of Ice and Fire is not merely a fantasy saga; it
+              is a brutal, unflinching deconstruction of power, morality, and
+              the devastating consequences of human ambition. Within its
+              sprawling, meticulously crafted tapestry of warring houses,
+              ancient magic, and existential threats, the series resonates most
+              profoundly through its relentless subversion of traditional heroic
+              narratives. It is a world where virtue is often punished, and the
+              most honorable intentions can pave the road to ruin.
             </p>
             <p className="text-lg leading-relaxed">
-              Here's a powerful brief on George R.R. Martin's A Song of Ice and
-              Fire, with a particular resonance to Robb Stark: A Song of Ice and
-              Fire: The Crushing Weight of Ideals in a World of Pragmatism
               George R.R. Martin's A Song of Ice and Fire is not merely a
-              fantasy saga; it is a brutal, unflinching deconstruction of power,
+              fantasy saga, it is a brutal, unflinching deconstruction of power,
               morality, and the devastating consequences of human ambition.
               Within its sprawling, meticulously crafted tapestry of warring
               houses, ancient magic, and existential threats, the series
@@ -140,22 +139,22 @@ const ThoughtsPage = ({ setCurrentPage, currentPage }) => {
               ruin. Nowhere is this tragic resonance more acutely felt than in
               the arc of Robb Stark, the Young Wolf. Thrust into leadership by
               his father's unjust execution, Robb embodies the archetypal noble
-              hero: courageous, charismatic, and fiercely loyal. He rallies the
-              North, wins impossible victories, and inspires unwavering
-              devotion. Yet, his story becomes a searing indictment of how
-              traditional chivalry and a rigid adherence to oaths can be fatal
-              flaws in a game utterly devoid of rules. Robb's fatal error is not
-              a lack of military prowess or moral compass, but his inability to
-              shed the idealism of his upbringing in a realm governed by
-              treachery, broken promises, and the cold, hard calculus of power.
-              His adherence to personal honor, his compassion, and his youthful
-              belief in justice ultimately become the very vulnerabilities
-              exploited by his cunning, ruthless adversaries. The Red Wedding, a
-              moment of unparalleled shock and despair, serves as the series'
-              most visceral testament to the brutal truth: in Westeros, the song
-              of ice and fire is often a dirge for those who play by rules that
-              no longer exist, leaving only ashes where noble intentions once
-              burned bright.
+              hero, he's courageous, charismatic, and fiercely loyal. He rallies
+              the North, wins impossible victories(SOMEHOW LOSES THE WAR
+              HOWEVER), and inspires unwavering devotion. Yet, his story becomes
+              a searing indictment of how traditional chivalry and a rigid
+              adherence to oaths can be fatal flaws in a game utterly devoid of
+              rules(LIFE). Robb's fatal error is not a lack of military prowess
+              or moral compass, but his inability to shed the idealism of his
+              upbringing in a realm governed by treachery, broken promises, and
+              the cold, hard calculus of power. His adherence to personal honor,
+              his compassion, and his youthful belief in justice ultimately
+              become the very vulnerabilities exploited by his cunning, ruthless
+              adversaries. The Red Wedding, a moment of unparalleled shock and
+              despair, serves as the series' most visceral testament to the
+              brutal truth: in Westeros, the song of ice and fire is often a
+              dirge for those who play by rules that no longer exist, leaving
+              only ashes where noble intentions once burned bright.
             </p>
           </div>
         </section>

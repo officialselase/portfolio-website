@@ -12,37 +12,35 @@ const Home = ({ setCurrentPage, currentPage }) => {
     {
       title: "Mr. ICT",
       description:
-        "An interactive coding tutorial platform that lets learners pause a video and experiment with the code being taught—right in the same interface. Built to make digital skills education more accessible, especially in low-resource settings. Simple, fast, and browser-native. No installations. Just watch, edit, run, and learn",
+        "An interactive coding tutorial platform that lets learners pause a video and experiment with the code being taught—right in the same interface.",
     },
     {
       title: "SwapWing",
       description:
-        "A sharing economy app for bartering goods and services—no money involved. Users list what they have and what they need, then match with others to swap directly.Built to explore alternative economies and reduce waste through trust-based exchange.",
+        "A sharing economy app for bartering goods and services—no money involved.",
     },
     {
       title: "Smart ELection Ledger System (SELS)",
       description:
-        "An election reporting app that collects real-time data directly from the field. Equipped with live analytics, trends, and breakdowns for newsrooms, observers, and electoral commissions. Designed to be fast, tamper-resistant, and easy to deploy under pressure.",
+        "An election reporting app that collects real-time data directly from the field.",
     },
     {
       title: "Shazamio",
       description:
-        "An app that helps artists get paid fairly when their music is played on radio or TV. It listens, tracks airtime, and calculates royalties based on actual usage—no guesswork. Built to support transparency between media houses and creatives.",
+        "An app that helps artists get paid fairly when their music is played on radio or TV.",
     },
     {
       title: "Alumni App",
       description:
-        "A simple app to help former students stay connected—across years, programs, and campuses. Supports messaging, events, job sharing, and mentorship. Designed to feel like a quiet network: useful, but never noisy.",
+        "A simple app to help former students stay connected—across years, programs, and campuses.",
     },
     {
       title: "Weekend Chef",
-      description:
-        "A sharing economy platform for home kitchens. Local cooks can onboard, prepare soups and stews in bulk, and serve nearby households. Built to lower food costs, reduce waste, and support small-scale culinary entrepreneurs.",
+      description: "A sharing economy platform for home kitchens.",
     },
     {
       title: "Messibo",
-      description:
-        "An API framework for building VoIP applications on Android. Designed during undergrad to explore the future of voice communication beyond traditional telcos. Built in Android Studio, with a focus on modularity, latency, and real-time call management.",
+      description: "Testing a VoIP API framework.",
     },
   ];
 
@@ -63,7 +61,7 @@ const Home = ({ setCurrentPage, currentPage }) => {
       title: "AI has finally come to stay",
       date: "Nov 2024",
       snippet:
-        "The rapid ascent of Artificial Intelligence from a niche technological pursuit to a pervasive force in daily life is undeniable. What was once the stuff of science fiction movies is now woven into the fabric of our very existence. I want ttalk about the trend i noticed where movies used to predict their existence to predicting them gaining consciousness, wink",
+        "The rapid ascent of Artificial Intelligence from a niche technological pursuit to a pervasive force in daily life is undeniable. What was once the stuff of science fiction movies is now woven into the fabric of our very existence. I won't talk about the trend i noticed where movies used to predict their existence to predicting them gaining consciousness, wink",
     },
     {
       title:

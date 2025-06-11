@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -8,7 +7,6 @@ import Work from "./pages/Work.jsx";
 import ThoughtsPage from "./pages/ThoughtsPage.jsx";
 import Shop from "./pages/Shop.jsx";
 
-// --- Main App Component ---
 const App = () => {
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.substring(1);
@@ -22,6 +20,7 @@ const App = () => {
     ];
     return validPages.includes(hash) ? hash : "home";
   });
+  const [cart, setCart] = useState([]); // Initialize cart state
 
   useEffect(() => {
     window.location.hash = currentPage;
@@ -78,7 +77,12 @@ const App = () => {
         );
       case "shop":
         return (
-          <Shop setCurrentPage={setCurrentPage} currentPage={currentPage} />
+          <Shop
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            cart={cart}
+            setCart={setCart}
+          />
         );
       default:
         return (
@@ -89,12 +93,10 @@ const App = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-gray-100 font-sans antialiased">
-      {/* Tailwind CSS CDN and Font Inter CDN are included here for preview environment */}
       {renderPage()}
-
       <footer className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 py-6 text-center text-gray-400 text-sm">
         <p>
-          &copy; {new Date().getFullYear()} sels.official. All rights reserved.
+          © {new Date().getFullYear()} sels.officialgh. All rights reserved.
         </p>
       </footer>
     </div>

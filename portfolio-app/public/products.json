@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Void element poster, framed",
+    "description": "Short description of the product",
+    "price": 1200.0,
+    "category": "Category",
+    "inStock": false,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+  },
+  {
+    "id": 2,
+    "name": "Void element poster, framed",
+    "description": "Short description of the product",
+    "price": 1200.0,
+    "category": "Category",
+    "inStock": false,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+  },
+  {
+    "id": 3,
+    "name": "Void element poster, framed",
+    "description": "Short description of the product",
+    "price": 1200.0,
+    "category": "Category",
+    "inStock": false,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+  },
+  {
+    "id": 4,
+    "name": "Product Title",
+    "description": "Short description of the product",
+    "price": 1200.0,
+    "category": "Category",
+    "inStock": false,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+  },
+  {
+    "id": 5,
+    "name": "Product Title",
+    "description": "Short description of the product",
+    "price": 1200.0,
+    "category": "Category",
+    "inStock": false,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+  }
+]

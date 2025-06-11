@@ -13,31 +13,37 @@ const Projects = ({ setCurrentPage, currentPage }) => {
     {
       title: "Mr. ICT",
       description:
-        "Portable, self contained llvm tools & libs with cross-compilation capability",
+        "An interactive coding tutorial platform that lets learners pause a video and experiment with the code being taught—right in the same interface. Built to make digital skills education more accessible, especially in low-resource settings. Simple, fast, and browser-native. No installations. Just watch, edit, run, and learn",
     },
-    { title: "SwapWing", description: "Virtual computer" },
+    {
+      title: "SwapWing",
+      description:
+        "A sharing economy app for bartering goods and services—no money involved. Users list what they have and what they need, then match with others to swap directly.Built to explore alternative economies and reduce waste through trust-based exchange.",
+    },
     {
       title: "Smart Election Ledger System (SELS)",
       description:
-        'Demonstrates loading high-resolution photos into WebGL with compressed textures vs "naive" uncompressed textures from JPEG images',
+        "An election reporting app that collects real-time data directly from the field. An election reporting app that collects real-time data directly from the field. Equipped with live analytics, trends, and breakdowns for newsrooms, observers, and electoral commissions. Designed to be fast, tamper-resistant, and easy to deploy under pressure.",
     },
     {
       title: "Shazamio",
-      description: "Keynote talk at Handmade Seattle 2021",
+      description:
+        "An app that helps artists get paid fairly when their music is played on radio or TV. It listens, tracks airtime, and calculates royalties based on actual usage—no guesswork. Built to support transparency between media houses and creatives.",
     },
     {
       title: "Alumni App",
       description:
-        "Tests how different web browsers round geometry to pixels, dp, etc.",
+        "A simple app to help former students stay connected—across years, programs, and campuses. Supports messaging, events, job sharing, and mentorship. Designed to feel like a quiet network: useful, but never noisy.",
     },
     {
       title: "Weekend Chef",
-      description: "Light-weight runner for the esbuild compiler",
+      description:
+        "A sharing economy platform for home kitchens. Local cooks can onboard, prepare soups and stews in bulk, and serve nearby households. Built to lower food costs, reduce waste, and support small-scale culinary entrepreneurs.",
     },
     {
       title: "Messibo",
       description:
-        "Explore web browser input pointer latency and try predictive tracking",
+        "Testing a VoIP API framework. Designed during undergrad to explore the future of voice communication beyond traditional telcos. Built in Android Studio, with a focus on modularity, latency, and real-time call management.",
     },
   ];
 
