@@ -3,45 +3,27 @@
     "id": 1,
     "name": "Void element poster, framed",
     "description": "Short description of the product",
-    "price": 1200.0,
-    "category": "Category",
+    "price": 12000.0,
+    "category": "Poster",
     "inStock": false,
-    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=Void+Poster"
   },
   {
     "id": 2,
-    "name": "Void element poster, framed",
+    "name": "Code syntax poster, framed",
     "description": "Short description of the product",
-    "price": 1200.0,
-    "category": "Category",
-    "inStock": false,
-    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+    "price": 15000.0,
+    "category": "Poster",
+    "inStock": true,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=Code+Poster"
   },
   {
     "id": 3,
-    "name": "Void element poster, framed",
+    "name": "Minimalist art print",
     "description": "Short description of the product",
-    "price": 1200.0,
-    "category": "Category",
-    "inStock": false,
-    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
-  },
-  {
-    "id": 4,
-    "name": "Void element poster, framed",
-    "description": "Short description of the product",
-    "price": 1200.0,
-    "category": "Category",
-    "inStock": false,
-    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
-  },
-  {
-    "id": 5,
-    "name": "Void element poster, framed",
-    "description": "Short description of the product",
-    "price": 1200.0,
-    "category": "Category",
-    "inStock": false,
-    "image": "https://placehold.co/400x300/F0F0F0/888888?text=React+Product+1"
+    "price": 8000.0,
+    "category": "Print",
+    "inStock": true,
+    "image": "https://placehold.co/400x300/F0F0F0/888888?text=Art+Print"
   }
 ]

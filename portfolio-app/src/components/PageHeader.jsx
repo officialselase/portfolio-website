@@ -1,4 +1,6 @@
+// portfolio-app/src/components/PageHeader.jsx
 import React from "react";
+import GlitchText from "./GlitchText";
 
 const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
   const mainTitleText = () => {
@@ -43,7 +45,14 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           onClick={() => setCurrentPage("home")}
           className="flex items-center p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none"
         >
-          {mainTitleText()}
+          <GlitchText
+            speed={0.5}
+            enableShadows={true}
+            enableOnHover={true}
+            className={`text-2xl sm:text-3xl font-medium ${mainTitleColorClass()}`}
+          >
+            {mainTitleText()}
+          </GlitchText>
         </button>
       </div>
       <nav className="w-full sm:w-auto">

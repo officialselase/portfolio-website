@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -23,6 +23,7 @@ const App = () => {
     return validPages.includes(hash) ? hash : "home";
   });
   const [cart, setCart] = useState([]);
+  const [currency, setCurrency] = useState("GHC");
 
   useEffect(() => {
     window.location.hash = currentPage;
@@ -85,6 +86,8 @@ const App = () => {
             currentPage={currentPage}
             cart={cart}
             setCart={setCart}
+            currency={currency}
+            setCurrency={setCurrency}
           />
         );
       case "cart":
@@ -94,6 +97,8 @@ const App = () => {
             currentPage={currentPage}
             cart={cart}
             setCart={setCart}
+            currency={currency}
+            setCurrency={setCurrency}
           />
         );
       default:

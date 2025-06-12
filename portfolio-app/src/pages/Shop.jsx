@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
-const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
+const Shop = ({
+  setCurrentPage,
+  currentPage,
+  cart,
+  setCart,
+  currency,
+  setCurrency,
+}) => {
   const [products, setProducts] = useState([]);
+  const [rates, setRates] = useState({ GHC: 1 });
 
   useEffect(() => {
     if (currentPage === "shop") {
@@ -12,6 +20,11 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
+
+    fetch("https://api.exchangerate-api.com/v4/latest/GHS")
+      .then((response) => response.json())
+      .then((data) => setRates(data.rates))
+      .catch((error) => console.error("Error fetching rates:", error));
   }, [currentPage]);
 
   const addToCart = (product) => {
@@ -30,6 +43,14 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
     alert(`${product.name} added to cart!`);
   };
 
+  const formatPrice = (price) => {
+    const convertedPrice = price * (rates[currency] || 1);
+    return new Intl.NumberFormat("en-GH", {
+      style: "currency",
+      currency: currency === "GHC" ? "GHS" : currency,
+    }).format(convertedPrice);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900 font-sans antialiased">
       <PageHeader
@@ -38,6 +59,17 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
         cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
       />
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="flex justify-end mt-4">
+          <select
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+            className="px-2 py-1 bg-gray-100 text-gray-900 text-sm rounded-md border-none cursor-pointer"
+          >
+            <option value="GHC">GHC (₵)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+          </select>
+        </div>
         <div className="flex flex-row gap-4 justify-center mt-4">
           <a
             href="#support"
@@ -87,7 +119,7 @@ const Shop = ({ setCurrentPage, currentPage, cart, setCart }) => {
                     {product.description}
                   </p>
                   <p className="text-lg font-semibold text-gray-800 mt-2">
-                    ${product.price.toFixed(2)}
+                    {formatPrice(product.price)}
                   </p>
                   <button
                     onClick={() => addToCart(product)}
