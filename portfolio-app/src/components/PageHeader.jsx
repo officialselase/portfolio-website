@@ -1,8 +1,15 @@
-// portfolio-app/src/components/PageHeader.jsx
-import React from "react";
-import GlitchText from "./GlitchText";
+import React, { useEffect, useState } from "react";
+import TextPressure from "./TextPressure";
 
 const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
+  const [isAnimating, setIsAnimating] = useState(true);
+
+  useEffect(() => {
+    setIsAnimating(true);
+    const timer = setTimeout(() => setIsAnimating(false), 3000);
+    return () => clearTimeout(timer);
+  }, [currentPage]);
+
   const mainTitleText = () => {
     switch (currentPage) {
       case "home":
@@ -36,6 +43,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
     return "text-gray-100";
   };
 
+  const textColor = () => {
+    return mainTitleColorClass() === "text-gray-900" ? "#111827" : "#f7f7f7";
+  };
+
   return (
     <header className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
       <div
@@ -45,14 +56,22 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           onClick={() => setCurrentPage("home")}
           className="flex items-center p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none"
         >
-          <GlitchText
-            speed={0.5}
-            enableShadows={true}
-            enableOnHover={true}
-            className={`text-2xl sm:text-3xl font-medium ${mainTitleColorClass()}`}
-          >
-            {mainTitleText()}
-          </GlitchText>
+          <div style={{ position: "relative", height: "auto" }}>
+            <TextPressure
+              text={mainTitleText()}
+              textColor={textColor()}
+              minFontSize={24}
+              weight={true}
+              italic={true}
+              width={false}
+              alpha={false}
+              flex={false}
+              stroke={false}
+              scale={false}
+              className={`text-2xl sm:text-3xl font-medium ${mainTitleColorClass()}`}
+              isAnimating={isAnimating}
+            />
+          </div>
         </button>
       </div>
       <nav className="w-full sm:w-auto">
@@ -154,3 +173,5 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
 };
 
 export default PageHeader;
+// This component renders the page header with navigation links and a dynamic title.
+// It uses the TextPressure component to create a text effect for the main title.
