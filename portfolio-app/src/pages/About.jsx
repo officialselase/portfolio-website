@@ -134,7 +134,7 @@ const About = ({ setCurrentPage, currentPage }) => {
             <h2 className="text-2xl font-semibold mb-4">Developer/Teacher</h2>
             <p>
               <p className="mt-4">
-                Things I enjoy developing: Web apps, Mobile apps, <br /> Design
+                Things I enjoy developing: Web apps, Mobile apps, <br /> Development
                 Tools: Pen & Paper, Flutter, FlutterFlow, VScode, PyCharm,
                 Android Studio, Git, Docker, Vite{" "}
               </p>
