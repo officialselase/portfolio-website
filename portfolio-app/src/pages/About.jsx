@@ -9,11 +9,11 @@ const About = ({ setCurrentPage, currentPage }) => {
       {/* PageHeader for consistent navigation */}
       <PageHeader setCurrentPage={setCurrentPage} currentPage={currentPage} />
 
-      <div className="w-full max-w-screen-xl mx-auto py-10 px-4 sm:px-6 md:px-8 flex flex-col">
+      <div className="w-full max-w-screen-xl mx-auto py-10 px-4 sm:px-6 md:px-8 flex flex-col ">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-center items-start mb-16 md:space-x-12">
+        <div className="flex flex-col md:flex-row justify-center items-center mb-16 md:space-x-6">
           {/* Left Side */}
-          <div className="flex-1 mb-10 md:mb-0 text-lg space-y-6 ">
+          <div className="flex-1 text-lg space-y-6 pl-4 pr-4 text-center md:text-left">
             <p>
               My name is Selase k. Agbai. I'm a Ghanaian male living in Accra.
               i'm a builder of digital worlds.
@@ -25,7 +25,7 @@ const About = ({ setCurrentPage, currentPage }) => {
                 onClick={() => setCurrentPage("work")}
                 className="text-yellow-600 hover:underline cursor-pointer"
               >
-                Read about my work &rarr;
+                Read about my work →
               </button>
             </p>
             <p>
@@ -38,7 +38,7 @@ const About = ({ setCurrentPage, currentPage }) => {
                 onClick={() => setCurrentPage("projects")}
                 className="text-yellow-600 hover:underline cursor-pointer"
               >
-                List of projects &rarr;
+                List of projects →
               </button>
             </p>
             <p>
@@ -56,21 +56,21 @@ const About = ({ setCurrentPage, currentPage }) => {
           </div>
 
           {/* Right Side - Now only contains Portrait and Social Links */}
-          <div className="flex flex-col items-end flex-1">
+          <div className="flex-1 flex flex-col items-center">
             {/* Portrait and Social Links */}
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-center">
               <img
                 src={`src/assets/react.svg`}
                 alt="Placeholder Portrait"
-                className="w-48 h-auto mb-4"
+                className="w-48 h-auto mb-6"
               />
-              <div className="text-right text-sm space-y-1">
+              <div className="text-right md:text-center text-base font-medium space-y-3 text-gray-700">
                 <p>
                   <a
                     href="https://x.com/Sels_Officialgh"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:text-yellow-600 hover:underline"
                   >
                     Twitter @Sels_Officialgh
                   </a>
@@ -80,7 +80,7 @@ const About = ({ setCurrentPage, currentPage }) => {
                     href="https://github.com/officialselase"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:text-yellow-600 hover:underline"
                   >
                     GitHub /officialselase
                   </a>
@@ -90,35 +90,36 @@ const About = ({ setCurrentPage, currentPage }) => {
                     href="https://www.figma.com/@selaseagbai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:text-yellow-600 hover:underline"
                   >
                     Figma @selaseagbai
                   </a>
                 </p>
-
                 <p>
                   <a
                     href="https://www.instagram.com/official_sels/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:text-yellow-600 hover:underline"
                   >
                     Instagram @official_sels...
                   </a>
                 </p>
-
                 <p>
                   <a
                     href="https://www.facebook.com/officialselase"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:text-yellow-600 hover:underline"
                   >
                     Facebook @officialselase
                   </a>
                 </p>
                 <p>
-                  <a href="mailto:rasmus@rsms.me" className="hover:underline">
+                  <a
+                    href="mailto:rasmus@rsms.me"
+                    className="hover:text-yellow-600 hover:underline"
+                  >
                     Email officialselase@gmail.com
                   </a>
                 </p>
@@ -134,20 +135,18 @@ const About = ({ setCurrentPage, currentPage }) => {
             <h2 className="text-2xl font-semibold mb-4">Developer/Teacher</h2>
             <p>
               <p className="mt-4">
-                Things I enjoy developing: Web apps, Mobile apps, <br /> Development
-                Tools: Pen & Paper, Flutter, FlutterFlow, VScode, PyCharm,
-                Android Studio, Git, Docker, Vite{" "}
+                Things I enjoy developing: Web apps, Mobile apps, <br />{" "}
+                Development Tools: Pen & Paper, Flutter, FlutterFlow, VScode,
+                PyCharm, Android Studio, Git, Docker, Vite{" "}
               </p>
             </p>
             <p className="mt-4">
               Languages I Speak: Html, CSS, JavaScript, Python,
               Node.js(JavaScript runtime), Dart, SQL{" "}
             </p>
-
             <p className="mt-4">
               Frameworks & Libraries: React, Django, Flutter{" "}
             </p>
-
             <p className="mt-4">
               I am a believer in collaborative exchange of ideas, driven by deep
               passion for teaching. Sharing knowledge and best practices
