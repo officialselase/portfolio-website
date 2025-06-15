@@ -1,140 +1,57 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
-const Shop = ({
-  setCurrentPage,
-  currentPage,
-  cart,
-  setCart,
-  currency,
-  setCurrency,
-}) => {
+const Shop = ({ setCurrentPage, currentPage }) => {
   const [products, setProducts] = useState([]);
-  const [rates, setRates] = useState({ GHC: 1 });
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/products/");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
     if (currentPage === "shop") {
+      fetchProducts();
       window.scrollTo(0, 0);
     }
-    fetch("/products.json")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching products:", error));
-
-    fetch("https://api.exchangerate-api.com/v4/latest/GHS")
-      .then((response) => response.json())
-      .then((data) => setRates(data.rates))
-      .catch((error) => console.error("Error fetching rates:", error));
   }, [currentPage]);
 
-  const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
-    if (existingItem) {
-      setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-    alert(`${product.name} added to cart!`);
-  };
-
-  const formatPrice = (price) => {
-    const convertedPrice = price * (rates[currency] || 1);
-    return new Intl.NumberFormat("en-GH", {
-      style: "currency",
-      currency: currency === "GHC" ? "GHS" : currency,
-    }).format(convertedPrice);
-  };
-
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-900 font-sans antialiased">
-      <PageHeader
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
-      />
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex justify-end mt-4">
-          <select
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-            className="px-2 py-1 bg-gray-100 text-gray-900 text-sm rounded-md border-none cursor-pointer"
-          >
-            <option value="GHC">GHC (₵)</option>
-            <option value="USD">USD ($)</option>
-            <option value="EUR">EUR (€)</option>
-          </select>
-        </div>
-        <div className="flex flex-row gap-4 justify-center mt-4">
-          <a
-            href="#support"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
-          >
-            <p className="text-lg font-medium text-gray-900 flex items-center justify-end">
-              Support me directly
-              <span className="ml-2">→</span>
-            </p>
-          </a>
-          <a
-            href="#register"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex px-3 py-2 bg-gray-100 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-200"
-          >
-            <p className="text-lg font-medium text-gray-900 flex items-center justify-end">
-              Register for a course
-              <span className="ml-2">→</span>
-            </p>
-          </a>
-        </div>
-        <div className="mt-16 pt-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Shop My Products
-          </h2>
-          <p className="text-sm text-gray-700 mb-4">
-            Items in cart: {cart.reduce((sum, item) => sum + item.quantity, 0)}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.length === 0 ? (
-              <p className="text-gray-700">Loading products...</p>
-            ) : (
-              products.map((product) => (
-                <div key={product.id} className="bg-white p-4 rounded-md">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-auto object-cover mb-4 rounded-sm"
-                  />
-                  <h3 className="text-xl font-medium text-gray-900">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-700 mt-1">
-                    {product.description}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800 mt-2">
-                    {formatPrice(product.price)}
-                  </p>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="mt-4 px-4 py-2 bg-gray-900 text-white text-sm rounded-md border-none cursor-pointer transition-colors duration-200 hover:bg-gray-700"
-                  >
-                    Add to Cart
-                  </button>
+    <div className="flex flex-col min-h-screen">
+      <section className="bg-gray-100 text-gray-900 py-10 px-4 sm:px-6 md:px-8 flex-grow">
+        <PageHeader setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <div className="w-full max-w-screen-xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-6">Shop</h1>
+          {products.length === 0 ? (
+            <p className="text-center">No products available.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {products.map((product, index) => (
+                <div key={index} className="border border-gray-300 p-4 rounded">
+                  <h3 className="text-xl font-medium">{product.name}</h3>
+                  <p className="text-gray-600">{product.description}</p>
+                  <p className="text-yellow-600 font-bold">${product.price}</p>
+                  {product.image_url && (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-32 object-cover mt-2"
+                    />
+                  )}
                 </div>
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
+      </section>
     </div>
   );
 };
-
 export default Shop;
+// This code defines a Shop component that fetches and displays products from an API.
+// It uses React hooks to manage state and side effects, and it includes a PageHeader component for navigation.
+// The products are displayed in a responsive grid layout, and each product shows its name, description, price, and image if available.
