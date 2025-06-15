@@ -120,6 +120,13 @@ const Cart = ({
             </button>
           </div>
         )}
+        {/* Browse All Products Button */}
+        <button
+          onClick={() => setCurrentPage("shop")}
+          className="mt-6 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
+        >
+          Browse All Products →
+        </button>
       </div>
     </div>
   );
