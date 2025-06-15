@@ -25,7 +25,7 @@ const Work = ({ setCurrentPage, currentPage }) => {
     <div className="flex flex-col min-h-screen">
       <section
         className="bg-custom-brown text-white pt-4 pb-10"
-        style={{ backgroundColor: "#4A2C2A" }}
+        style={{ backgroundColor: "#c78f8b" }}
       >
         <PageHeader setCurrentPage={setCurrentPage} currentPage={currentPage} />
         <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
