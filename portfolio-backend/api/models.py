@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -12,13 +13,15 @@ class WorkExperience(models.Model):
         return f"{self.title} at {self.company}"
 
 class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.quantity}x {self.name} (${self.price})"
+        return f"{self.quantity}x {self.name} (${self.price}) for {self.user.username if self.user else self.session_key}"
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
