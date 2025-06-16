@@ -7,10 +7,12 @@ const Shop = ({ setCurrentPage, currentPage }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/products/", {
-          credentials: "include",
-        });
+        const response = await fetch("http://127.0.0.1:8000/api/products/");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+        console.log("Fetched data:", data);
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);

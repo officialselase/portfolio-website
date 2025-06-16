@@ -67,12 +67,7 @@ const Cart = ({ setCurrentPage, currentPage }) => {
               ))}
             </div>
           )}
-          <button
-            onClick={() => addToCart({ name: "Test Product", price: 19.99 })}
-            className="mt-6 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
-          >
-            Add Test Item to Cart →
-          </button>
+        
           <button
             onClick={() => setCurrentPage("shop")}
             className="mt-2 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
