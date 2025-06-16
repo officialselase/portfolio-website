@@ -7,7 +7,9 @@ const Shop = ({ setCurrentPage, currentPage }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/products/");
+        const response = await fetch("http://127.0.0.1:8000/api/products/", {
+          credentials: "include",
+        });
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -19,6 +21,22 @@ const Shop = ({ setCurrentPage, currentPage }) => {
       window.scrollTo(0, 0);
     }
   }, [currentPage]);
+
+  const addToCart = (product) => {
+    fetch("http://127.0.0.1:8000/api/cart/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then(() => alert(`${product.name} added to cart!`))
+      .catch((error) => console.error("Error adding to cart:", error));
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -42,6 +60,12 @@ const Shop = ({ setCurrentPage, currentPage }) => {
                       className="w-full h-32 object-cover mt-2"
                     />
                   )}
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="mt-2 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               ))}
             </div>
