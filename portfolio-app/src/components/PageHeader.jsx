@@ -1,3 +1,4 @@
+// src/components/PageHeader.js
 import React from "react";
 
 const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {

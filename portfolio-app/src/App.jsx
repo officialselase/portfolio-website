@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home.jsx";
@@ -55,6 +56,7 @@ const App = () => {
   }, []);
 
   const renderPage = () => {
+    const cartCount = cart.length;
     switch (currentPage) {
       case "home":
         return (
@@ -88,6 +90,7 @@ const App = () => {
             setCart={setCart}
             currency={currency}
             setCurrency={setCurrency}
+            cartCount={cartCount}
           />
         );
       case "cart":
@@ -99,6 +102,7 @@ const App = () => {
             setCart={setCart}
             currency={currency}
             setCurrency={setCurrency}
+            cartCount={cartCount}
           />
         );
       default:

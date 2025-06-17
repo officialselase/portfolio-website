@@ -126,7 +126,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://sels-app-nine.vercel.app',
-    'http://localhost:5173',
-    'http://127.0.0.1:8000',
+    'http://localhost:5173',  # For local testing
+    'http://127.0.0.1:8000',  # For local server
+    'https://sels-app-nine.vercel.app',  # For live site
 ]
+CORS_ALLOW_CREDENTIALS = True  # Must be true for credentials: "include"

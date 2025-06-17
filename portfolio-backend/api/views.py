@@ -1,3 +1,4 @@
+# portfolio-backend/api/views.py
 from rest_framework import viewsets
 from .models import WorkExperience, CartItem, Product
 from .serializers import WorkExperienceSerializer, CartItemSerializer, ProductSerializer

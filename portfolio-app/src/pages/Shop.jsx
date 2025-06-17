@@ -1,18 +1,25 @@
+// src/pages/Shop.jsx
 import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
-const Shop = ({ setCurrentPage, currentPage }) => {
+const Shop = ({
+  setCurrentPage,
+  currentPage,
+  cart,
+  setCart,
+  currency,
+  setCurrency,
+  cartCount,
+}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/products/");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const response = await fetch("http://127.0.0.1:8000/api/products/", {
+          credentials: "include",
+        });
         const data = await response.json();
-        console.log("Fetched data:", data);
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -25,25 +32,28 @@ const Shop = ({ setCurrentPage, currentPage }) => {
   }, [currentPage]);
 
   const addToCart = (product) => {
-    fetch("http://127.0.0.1:8000/api/cart/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({
-        name: product.name,
-        price: product.price,
-        quantity: 1,
-      }),
-    })
-      .then((response) => response.json())
-      .then(() => alert(`${product.name} added to cart!`))
-      .catch((error) => console.error("Error adding to cart:", error));
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.name === product.name);
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.name === product.name
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+    alert(`${product.name} added to cart!`);
   };
 
   return (
     <div className="flex flex-col min-h-screen">
       <section className="bg-gray-100 text-gray-900 py-10 px-4 sm:px-6 md:px-8 flex-grow">
-        <PageHeader setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <PageHeader
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          cartCount={cartCount}
+        />
         <div className="w-full max-w-screen-xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold mb-6">Shop</h1>
           {products.length === 0 ? (
@@ -78,6 +88,3 @@ const Shop = ({ setCurrentPage, currentPage }) => {
   );
 };
 export default Shop;
-// This code defines a Shop component that fetches and displays products from an API.
-// It uses React hooks to manage state and side effects, and it includes a PageHeader component for navigation.
-// The products are displayed in a responsive grid layout, and each product shows its name, description, price, and image if available.
