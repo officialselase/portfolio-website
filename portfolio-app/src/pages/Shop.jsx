@@ -31,21 +31,34 @@ const Shop = ({
     }
   }, [currentPage]);
 
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.name === product.name);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.name === product.name
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+  const addToCart = async (product) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/wishlist/${product.id}/`,
+        {
+          method: "POST",
+          credentials: "include", // Ensures session cookies are sent
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setCart((prevCart) => {
+          const existingItem = prevCart.find(
+            (item) => item.name === product.name
+          );
+          return existingItem
+            ? prevCart
+            : [...prevCart, { ...product, quantity: 1 }];
+        });
+        alert(data.message || `${product.name} added to wishlist!`);
+      } else {
+        alert(data.error || "Failed to add to wishlist");
       }
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
-    alert(`${product.name} added to cart!`);
+    } catch (error) {
+      alert("Error adding to wishlist");
+      console.error(error);
+    }
   };
-
   return (
     <div className="flex flex-col min-h-screen">
       <section className="bg-gray-100 text-gray-900 py-10 px-4 sm:px-6 md:px-8 flex-grow">

@@ -29,6 +29,18 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image_url = models.URLField(max_length=500, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=10,
+        choices=[
+            ('available', 'Available'),
+            ('pending', 'Pending'),
+            ('sold', 'Sold')
+        ],
+        default='available'
+    )
+    claimed_by = models.CharField(max_length=100, blank=True, null=True)  # User ID or session key
+    claimed_until = models.DateTimeField(blank=True, null=True)  # 30-minute timeout
+    sold_at = models.DateTimeField(blank=True, null=True)  # Sale completion time
 
     def __str__(self):
         return self.name
