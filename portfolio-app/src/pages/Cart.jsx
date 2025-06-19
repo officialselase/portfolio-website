@@ -32,14 +32,15 @@ const Cart = ({
   const handleOrderSubmit = async (e) => {
     e.preventDefault();
     const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const items = cart.map((item) => ({ name: item.name, price: item.price }));
     const response = await fetch(
-      "https://sels-portfolio-api.vercel.app/api/create-order/",
+      "http://127.0.0.1:8000/api/create-order/", // Update to Vercel URL for production
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          items: cart.map((item) => ({ name: item.name, price: item.price })),
+          items: items,
           total_amount: total,
         }),
       }
@@ -47,10 +48,11 @@ const Cart = ({
     const data = await response.json();
     if (response.ok) {
       setOrderId(data.order_id);
+      setCart([]); // Clear cart on frontend
       setShowCheckout(false);
       setShowPayment(true);
     } else {
-      alert(data.error);
+      alert(data.error || "Failed to place order");
     }
   };
 
@@ -66,8 +68,11 @@ const Cart = ({
           </p>
           <p className="mb-2">
             <span className="font-semibold">Important:</span> Include your order
-            ID <span className="font-semibold">{orderId || "MYSHOP-ORD-0001"}</span> in the
-            reference.
+            ID{" "}
+            <span className="font-semibold">
+              {orderId || "MYSHOP-ORD-0001"}
+            </span>{" "}
+            in the reference.
           </p>
           <p className="mb-4">
             Once payment is complete, we will process your order. Contact{" "}
@@ -170,34 +175,24 @@ const Cart = ({
             <div className="flex flex-col space-y-4">
               {cart.map((item, index) => (
                 <div key={index} className="border-b border-gray-300 pb-4">
-                  <p>
-                    {item.name} - ${item.price}
-                  </p>
+                  {item.name} - ${item.price}
                 </div>
               ))}
-              <a
+              <button
                 onClick={() => setShowCheckout(true)}
-                className="mt-6 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
-                style={{ textDecoration: "none" }} // Ensures no underline by default, hover adds it
-                role="button"
-                tabIndex={0}
-                onKeyPress={(e) => e.key === "Enter" && setShowCheckout(true)}
+                className="mt-6 bg-yellow-600 text-white font-medium py-2 px-4 rounded hover:bg-yellow-700"
                 disabled={cart.length === 0}
               >
                 Checkout
-              </a>
+              </button>
             </div>
           )}
-          <a
+          <button
             onClick={() => setCurrentPage("shop")}
             className="mt-6 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
-            style={{ textDecoration: "none" }}
-            role="button"
-            tabIndex={0}
-            onKeyPress={(e) => e.key === "Enter" && setCurrentPage("shop")}
           >
             Browse All Products →
-          </a>
+          </button>
           {showCheckout && <CheckoutForm />}
           {showPayment && <PaymentPopup />}
         </div>

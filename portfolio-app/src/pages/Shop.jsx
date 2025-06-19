@@ -1,4 +1,3 @@
-// src/pages/Shop.jsx
 import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
@@ -59,6 +58,7 @@ const Shop = ({
       console.error(error);
     }
   };
+
   return (
     <div className="flex flex-col min-h-screen">
       <section className="bg-gray-100 text-gray-900 py-10 px-4 sm:px-6 md:px-8 flex-grow">
@@ -74,7 +74,12 @@ const Shop = ({
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {products.map((product, index) => (
-                <div key={index} className="border border-gray-300 p-4 rounded">
+                <div
+                  key={index}
+                  className={`border border-gray-300 p-4 rounded ${
+                    product.status === "sold" ? "opacity-50" : ""
+                  }`}
+                >
                   <h3 className="text-xl font-medium">{product.name}</h3>
                   <p className="text-gray-600">{product.description}</p>
                   <p className="text-yellow-600 font-bold">${product.price}</p>
@@ -88,9 +93,13 @@ const Shop = ({
                   <button
                     onClick={() => addToCart(product)}
                     className="mt-2 bg-transparent text-yellow-600 font-medium hover:underline cursor-pointer outline-none"
+                    disabled={product.status === "sold"}
                   >
                     Add to Cart
                   </button>
+                  {product.status === "sold" && (
+                    <p className="mt-2 text-red-500 text-center">Unavailable</p>
+                  )}
                 </div>
               ))}
             </div>
