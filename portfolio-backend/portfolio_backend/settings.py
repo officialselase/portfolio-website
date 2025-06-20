@@ -136,5 +136,5 @@ CORS_ALLOW_CREDENTIALS = True  # Must be true for credentials: "include"
 # REST Framework Settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny',],
 }
