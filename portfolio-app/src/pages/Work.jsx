@@ -8,7 +8,9 @@ const Work = ({ setCurrentPage, currentPage }) => {
     // Fetch data when component mounts or currentPage changes
     const fetchWork = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/workexperience/");
+        const response = await fetch("https://sels-app.vercel.app/api/work/");
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
         setWorkExperience(data);
       } catch (error) {
