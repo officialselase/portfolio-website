@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
+from rest_framework.permissions import AllowAny
 import uuid
 import logging
 
@@ -50,6 +51,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class WorkExperienceViewSet(viewsets.ModelViewSet):
     queryset = WorkExperience.objects.all()
     serializer_class = WorkExperienceSerializer
+    permission_classes = [AllowAny]  # Allow any user to view work experiences
 
 @login_required
 @api_view(['POST'])
