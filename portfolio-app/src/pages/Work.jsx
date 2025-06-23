@@ -1,3 +1,4 @@
+// src/Work.js
 import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
@@ -54,8 +55,60 @@ const Work = ({ setCurrentPage, currentPage, cartCount }) => {
   }, [currentPage]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <section className="bg-gray-900 text-gray-100 py-10 px-4 sm:px-6 md:px-8 flex-grow">
+    <div
+      className="flex flex-col min-h-screen bg-gray-900 text-gray-100"
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      {/* Glowing Stars Background */}
+      <div className="stars"></div>
+      <style>
+        {`
+          .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: twinkle 5s infinite;
+          }
+          .stars::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #fff, transparent 10%);
+            opacity: 0.3;
+            animation: glow 3s infinite alternate;
+          }
+          @keyframes twinkle {
+            0%, 100% { background-size: 20px 20px; }
+            50% { background-size: 25px 25px; }
+          }
+          @keyframes glow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.5; }
+          }
+          /* Ensure content stays above stars */
+          section {
+            position: relative;
+            z-index: 1;
+          }
+        `}
+      </style>
+
+      {/* Menu at the Top (PageHeader) */}
+      <PageHeader
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        cartCount={cartCount}
+      />
+
+      {/* Work Experience Section */}
+      <section className="py-10 px-4 sm:px-6 md:px-8 flex-grow">
         <div className="w-full max-w-screen-xl mx-auto">
           <div className="flex flex-col space-y-8">
             {workExperience.map((entry, index) => (
@@ -77,13 +130,9 @@ const Work = ({ setCurrentPage, currentPage, cartCount }) => {
           </div>
         </div>
       </section>
-      <PageHeader
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        cartCount={cartCount}
-      />
     </div>
   );
 };
 
 export default Work;
+// src/pages/Cart.jsx
