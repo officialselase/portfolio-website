@@ -42,12 +42,3 @@ class Order(models.Model):
     def __str__(self):
         return self.order_id
 
-class WorkExperience(models.Model):
-    company = models.CharField(max_length=100)
-    role = models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField(blank=True, null=True)
-    description = models.TextField()
-
-    def __str__(self):
-        return f"{self.role} at {self.company}"

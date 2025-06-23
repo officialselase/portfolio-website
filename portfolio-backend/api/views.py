@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import CartItem, Product, Order, WorkExperience
-from .serializers import CartItemSerializer, ProductSerializer, OrderSerializer, WorkExperienceSerializer
+from .models import CartItem, Product, Order
+from .serializers import CartItemSerializer, ProductSerializer, OrderSerializer
 from django.utils import timezone
 from django.contrib.sessions.models import Session
 from rest_framework.decorators import api_view
@@ -47,11 +47,6 @@ class CartItemViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()  # Changed to include all products
     serializer_class = ProductSerializer
-
-class WorkExperienceViewSet(viewsets.ModelViewSet):
-    queryset = WorkExperience.objects.all()
-    serializer_class = WorkExperienceSerializer
-    permission_classes = [AllowAny]  # Allow any user to view work experiences
 
 @login_required
 @api_view(['POST'])
