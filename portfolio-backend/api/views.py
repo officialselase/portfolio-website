@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import CartItem, Product, Order
-from .serializers import CartItemSerializer, ProductSerializer, OrderSerializer
+from .models import CartItem, Product, Order, Registration
+from .serializers import CartItemSerializer, ProductSerializer, OrderSerializer, RegistrationSerializer
 from django.utils import timezone
 from django.contrib.sessions.models import Session
 from rest_framework.decorators import api_view
@@ -155,4 +155,20 @@ def create_order(request):
         return Response({'message': 'Order placed', 'order_id': order_id}, status=status.HTTP_201_CREATED)
     except Exception as e:
         logger.error("Failed to create order: %s", str(e), exc_info=True)
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['POST'])
+@transaction.atomic
+def registration(request):
+    logger.debug("Registration request received with data: %s", request.data)
+    try:
+        serializer = RegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            logger.info("Registration successful: %s", serializer.data)
+            return Response({'message': 'Registration successful! Check your email for next steps.'}, status=status.HTTP_201_CREATED)
+        logger.error("Invalid registration data: %s", serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error("Failed to process registration: %s", str(e), exc_info=True)
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

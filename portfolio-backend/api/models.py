@@ -42,3 +42,20 @@ class Order(models.Model):
     def __str__(self):
         return self.order_id
 
+class Registration(models.Model):
+    student_name = models.CharField(max_length=100)
+    parent_name = models.CharField(max_length=100)
+    parent_contact = models.CharField(max_length=15)
+    parent_email = models.EmailField()
+    age = models.PositiveIntegerField()
+    class_type = models.CharField(max_length=50, choices=[('web', 'Web Development'), ('app', 'App Development')])
+    class_option = models.CharField(max_length=50, choices=[
+        ('jhs_leavers', 'JHS Leavers (July 8th)'),
+        ('jhs_weekend', 'JHS Weekend (Soon)'),
+        ('shs_vacation', 'SHS Vacation (Soon)')
+    ])
+    payment_details = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.student_name} - {self.class_option}"

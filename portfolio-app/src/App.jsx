@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home.jsx";
@@ -8,6 +7,7 @@ import Work from "./pages/Work.jsx";
 import ThoughtsPage from "./pages/ThoughtsPage.jsx";
 import Shop from "./pages/Shop.jsx";
 import Cart from "./pages/Cart.jsx";
+import Learn from "./pages/Learn.jsx";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -20,6 +20,7 @@ const App = () => {
       "thoughts",
       "shop",
       "cart",
+      "learn", // Added for the new page
     ];
     return validPages.includes(hash) ? hash : "home";
   });
@@ -41,6 +42,7 @@ const App = () => {
         "thoughts",
         "shop",
         "cart",
+        "learn", // Added for the new page
       ];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
@@ -104,6 +106,10 @@ const App = () => {
             setCurrency={setCurrency}
             cartCount={cartCount}
           />
+        );
+      case "learn":
+        return (
+          <Learn setCurrentPage={setCurrentPage} currentPage={currentPage} />
         );
       default:
         return (

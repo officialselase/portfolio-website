@@ -97,7 +97,6 @@ const Home = ({ setCurrentPage, currentPage }) => {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-gray-100 mt-4">
           {/* Projects Column */}
           <div className="col-span-1">
-            {/* Made the Projects heading a clickable button */}
             <button
               onClick={() => setCurrentPage("projects")}
               className="text-xl font-bold mb-6 text-yellow-300 p-0 bg-transparent border-none cursor-pointer outline-none text-left hover:underline"
@@ -107,7 +106,6 @@ const Home = ({ setCurrentPage, currentPage }) => {
             <ul className="list-none m-0 p-0 flex flex-col space-y-6">
               {projects.map((item, index) => (
                 <li key={index}>
-                  {/* Individual project items are now just divs, not links */}
                   <div className="block text-inherit no-underline relative transition-all duration-200 text-left">
                     <h3 className="text-lg font-medium mb-1 text-yellow-300">
                       {item.title}
@@ -119,30 +117,26 @@ const Home = ({ setCurrentPage, currentPage }) => {
                 </li>
               ))}
               <li>
-                {/* This button still navigates to projects page */}
                 <button
                   onClick={() => setCurrentPage("projects")}
                   className="text-sm font-medium mt-4 bg-transparent border-none text-inherit cursor-pointer p-0 outline-none hover:underline transition-all duration-200"
                 >
-                  See all {projects.length} projects &rarr;
+                  See all {projects.length} projects →
                 </button>
               </li>
             </ul>
           </div>
 
           <div className="col-span-1">
-            {/* Made the Thoughts & ideas heading a clickable button */}
             <button
               onClick={() => setCurrentPage("thoughts")}
               className="text-xl font-bold mb-6 text-yellow-300 p-0 bg-transparent border-none cursor-pointer outline-none text-left hover:underline"
             >
               Thoughts & ideas
             </button>
-
             <ul className="list-none m-0 p-0 flex flex-col space-y-6">
               {thoughts.map((item, index) => (
                 <li key={index}>
-                  {/* Replaced <a> with <div> and kept original styling for appearance */}
                   <div className="block text-inherit no-underline relative transition-all duration-200">
                     <h3 className="text-lg font-medium mb-1 text-yellow-300">
                       {item.title}
@@ -163,7 +157,7 @@ const Home = ({ setCurrentPage, currentPage }) => {
                   onClick={() => setCurrentPage("thoughts")}
                   className="text-sm font-medium mt-4 bg-transparent border-none text-inherit cursor-pointer p-0 outline-none hover:underline transition-all duration-200"
                 >
-                  Browse all {thoughts.length} articles &rarr;
+                  Browse all {thoughts.length} articles →
                 </button>
               </li>
             </ul>
@@ -171,18 +165,15 @@ const Home = ({ setCurrentPage, currentPage }) => {
 
           {/* Right Column: Bio and CTA boxes */}
           <div className="col-span-1 flex flex-col space-y-10">
-            {/* Bio */}
             <p className="text-lg leading-relaxed font-normal">
               I’m a Ghanaian he/him living in Accra. I like to think of myself
               as a builder of worlds, <worlds className="s"></worlds> Software
               is the medium through which I express myself.
             </p>
 
-            {/* CTA 1: The Inter typeface family */}
+            {/* CTA 1: Learn React/Flutter */}
             <a
-              onClick={() => setCurrentPage("shop")}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setCurrentPage("learn")}
               className="block p-4 bg-gray-800 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-700"
             >
               <p className="text-base font-normal text-gray-300">
@@ -190,20 +181,18 @@ const Home = ({ setCurrentPage, currentPage }) => {
               </p>
               <p className="text-lg font-medium text-yellow-300 flex items-center justify-between mt-1">
                 Register Now!
-                <span className="ml-2">&rarr;</span>
+                <span className="ml-2">→</span>
               </p>
             </a>
 
             {/* CTA 2: Buy a nice poster */}
             <a
               onClick={() => setCurrentPage("shop")}
-              target="_blank"
-              rel="noopener noreferrer"
               className="block p-4 bg-gray-800 rounded-md text-inherit no-underline transition-colors duration-200 hover:bg-gray-700"
             >
               <p className="text-lg font-medium text-yellow-300 flex items-center justify-between">
                 Buy a nice poster
-                <span className="ml-2">&rarr;</span>
+                <span className="ml-2">→</span>
               </p>
             </a>
           </div>
