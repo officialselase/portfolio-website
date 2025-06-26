@@ -162,11 +162,19 @@ def create_order(request):
 def registration(request):
     logger.debug("Registration request received with data: %s", request.data)
     try:
-        serializer = RegistrationSerializer(data=request.data)
+        data = request.data
+        required_fields = ['studentName', 'parentName', 'parentContact', 'parentEmail', 'age', 'classType', 'classOption', 'paymentDetails']
+        missing_fields = [field for field in required_fields if field not in data or not data[field]]
+        if missing_fields:
+            logger.error("Missing required fields: %s", missing_fields)
+            return Response({'error': f'Missing required fields: {", ".join(missing_fields)}'}, status=status.HTTP_400_BAD_REQUEST)
+
+        reference = f"{data['studentName'].lower().replace(' ', '')}_{data['classType']}"
+        serializer = RegistrationSerializer(data={**data, 'reference': reference})
         if serializer.is_valid():
             serializer.save()
             logger.info("Registration successful: %s", serializer.data)
-            return Response({'message': 'Registration successful! Check your email for next steps.'}, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Registration successful! Payment instructions will follow.'}, status=status.HTTP_201_CREATED)
         logger.error("Invalid registration data: %s", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
