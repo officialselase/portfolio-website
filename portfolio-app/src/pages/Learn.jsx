@@ -3,14 +3,13 @@ import PageHeader from "../components/PageHeader";
 
 const Learn = ({ setCurrentPage, currentPage }) => {
   const [formData, setFormData] = useState({
-    studentName: "",
-    parentName: "",
-    parentContact: "",
-    parentEmail: "",
+    student_name: "",
+    parent_name: "",
+    parent_contact: "",
+    parent_email: "",
     age: "",
-    classType: "",
-    classOption: "",
-    paymentDetails: "",
+    class_type: "",
+    class_option: "",
   });
   const [message, setMessage] = useState("");
   const [showPayment, setShowPayment] = useState(false);
@@ -23,50 +22,53 @@ const Learn = ({ setCurrentPage, currentPage }) => {
     const reference = `${formData.studentName
       .toLowerCase()
       .replace(/\s/g, "")}_${formData.classType}`;
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/registrations/`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, reference }),
-      }
+    console.log(
+      "Submitting to:",
+      `http://127.0.0.1:8000/api/registrations/`,
+      "Data:",
+      { ...formData, reference }
     );
-    if (response.ok) {
-      setShowPayment(true);
+    const response = await fetch(`http://127.0.0.1:8000/api/registrations/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        student_name: formData.studentName,
+        parent_name: formData.parentName,
+        parent_contact: formData.parentContact,
+        parent_email: formData.parentEmail,
+        age: formData.age,
+        class_type: formData.classType,
+        class_option: formData.classOption,
+        reference: reference,
+      }),
+    });
+    let data;
+    try {
+      data = await response.json();
+    } catch (error) {
+      console.error("Failed to parse response:", error);
+      data = { error: "Invalid response from server" };
+    }
+    console.log("Response Status:", response.status, "Data:", data);
+    if (response.status === 201) {
+      setFormData({
+        student_name: "",
+        parent_name: "",
+        parent_contact: "",
+        parent_email: "",
+        age: "",
+        class_type: "",
+        class_option: "",
+      });
+      setMessage(
+        `Thank you for registering for the course! Please send GHC 1000 to 0555964195 with reference ${reference}. Once payment is confirmed manually by me, we will update the backend from pending to paid and send an email manually with the schedule.`
+      );
     } else {
-      setMessage("Oops! Something went wrong. Please try again.");
+      setMessage(
+        `Oops! ${data.error || "Something went wrong. Please try again."}`
+      );
     }
   };
-
-  const PaymentPopup = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-        <h2 className="text-2xl font-bold text-yellow-600 mb-4">
-          Payment Instructions
-        </h2>
-        <p className="mb-2 text-lg">
-          Please send <span className="font-semibold">1000 GHC</span> to{" "}
-          <span className="font-semibold">0555964195</span>.
-        </p>
-        <p className="mb-2 text-lg">
-          Use this reference:{" "}
-          <span className="font-semibold">{`${formData.studentName
-            .toLowerCase()
-            .replace(/\s/g, "")}_${formData.classType}`}</span>
-        </p>
-        <p className="mb-4 text-md text-gray-600">
-          We’ll confirm your payment within 24-48 hours. Check your email for
-          class details after confirmation!
-        </p>
-        <button
-          onClick={() => setShowPayment(false)}
-          className="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="flex flex-col min-h-full">
@@ -180,13 +182,14 @@ const Learn = ({ setCurrentPage, currentPage }) => {
                 Register for Coding Magic!
               </button>
               {message && (
-                <p className="text-green-400 text-center">{message}</p>
+                <p className="text-green-400 text-center p-4 bg-gray-800 rounded-lg mt-4">
+                  {message}
+                </p>
               )}
-              {showPayment && <PaymentPopup />}
             </form>
             <p className="text-sm text-gray-400 mt-4">
-              Note: Payment instructions will be sent via email after
-              registration...
+              Note: Confirmation and schedule will be sent via email and
+              whatsapp after registration...
             </p>
           </div>
         </section>

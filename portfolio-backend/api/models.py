@@ -54,9 +54,8 @@ class Registration(models.Model):
         ('jhs_weekend', 'JHS Weekend (Soon)'),
         ('shs_vacation', 'SHS Vacation (Soon)')
     ])
-    payment_details = models.CharField(max_length=100)
     reference = models.CharField(max_length=100, unique=True)
-    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('paid', 'Paid'), ('cancelled', 'Cancelled'), ('confirmed', 'Confirmed')], default='pending')
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('paid', 'Paid'), ('confirmed', 'Confirmed')], default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
