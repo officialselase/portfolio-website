@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 
 const Learn = ({ setCurrentPage, currentPage }) => {
   const [formData, setFormData] = useState({
-    student_name: "",
-    parent_name: "",
-    parent_contact: "",
-    parent_email: "",
+    studentName: "",
+    parentName: "",
+    parentContact: "",
+    parentEmail: "",
     age: "",
-    class_type: "",
-    class_option: "",
+    classType: "",
+    classOption: "",
   });
   const [message, setMessage] = useState("");
-  const [showPayment, setShowPayment] = useState(false);
+  const [showGif, setShowGif] = useState(false);
+
+  useEffect(() => {
+    const userResponse = window.prompt(
+      "Page Under Construction! This site is still being built. Click OK to continue exploring or Cancel to leave."
+    );
+    if (userResponse === null) {
+      window.location.href = "home"; // Redirect to home if Cancel is clicked    } else {
+      setShowGif(true);
+    }
+  }, []);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,13 +62,13 @@ const Learn = ({ setCurrentPage, currentPage }) => {
     console.log("Response Status:", response.status, "Data:", data);
     if (response.status === 201) {
       setFormData({
-        student_name: "",
-        parent_name: "",
-        parent_contact: "",
-        parent_email: "",
+        studentName: "",
+        parentName: "",
+        parentContact: "",
+        parentEmail: "",
         age: "",
-        class_type: "",
-        class_option: "",
+        classType: "",
+        classOption: "",
       });
       setMessage(
         `Thank you for registering for the course! Please send GHC 1000 to 0555964195 with reference ${reference}. Once payment is confirmed manually by me, we will update the backend from pending to paid and send an email manually with the schedule.`
@@ -73,6 +83,18 @@ const Learn = ({ setCurrentPage, currentPage }) => {
   return (
     <div className="flex flex-col min-h-full">
       <PageHeader setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      {showGif && (
+        <div className="text-center py-4">
+          <img
+            src="/under-construction.gif"
+            alt="Under Construction"
+            className="mx-auto"
+          />
+          <p className="text-gray-300 mt-2">
+            Stay tuned—more exciting features coming soon!
+          </p>
+        </div>
+      )}
       <main className="flex-grow w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 py-8">
         <section className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-gray-100 mt-4">
           <div className="col-span-1">
@@ -188,8 +210,7 @@ const Learn = ({ setCurrentPage, currentPage }) => {
               )}
             </form>
             <p className="text-sm text-gray-400 mt-4">
-              Note: Confirmation and schedule will be sent via email and
-              whatsapp after registration...
+              Note: Payment instructions will be provided after registration...
             </p>
           </div>
         </section>
