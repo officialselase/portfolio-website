@@ -12,7 +12,7 @@ const VideoPlayer = React.memo(({ videoUrl }) => {
   return (
     <>
       <img
-        src={`https://img.youtube.com/vi/${videoUrl.split("v=")[1]}/0.jpg`} // Thumbnail
+        src={`https://img.youtube.com/vi/${videoUrl.split("v=")[1]}/0.jpg`}
         alt="Mr. ICT Demo Thumbnail"
         className="video-thumbnail"
         onClick={handleClick}
@@ -41,83 +41,104 @@ const VideoPlayer = React.memo(({ videoUrl }) => {
   );
 });
 
-const FormSection = React.memo(({ onSubmit, formData, handleChange }) => (
-  <section className="form-section" aria-label="Join Community Form">
-    <h2 className="text-xl font-semibold mb-4">
-      Ready to Join Our Coding Community?
-    </h2>
-    <form onSubmit={onSubmit} className="space-y-4">
-      <input
-        name="studentName"
-        value={formData.studentName}
-        onChange={handleChange}
-        placeholder="Student's Full Name"
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Student's Full Name"
-      />
-      <input
-        name="parentContact"
-        value={formData.parentContact}
-        onChange={handleChange}
-        placeholder="Parent/Guardian's Contact Number"
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Parent/Guardian's Contact Number"
-      />
-      <input
-        name="parentEmail"
-        value={formData.parentEmail}
-        onChange={handleChange}
-        placeholder="Parent/Guardian's Email"
-        type="email"
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Parent/Guardian's Email"
-      />
-      <input
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
-        placeholder="Student's Age"
-        type="number"
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Student's Age"
-      />
-      <select
-        name="classType"
-        value={formData.classType}
-        onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Class Type"
-      >
-        <option value="">Select Class Type</option>
-        <option value="web">Web Development</option>
-        <option value="app">Block-Based Programming</option>
-      </select>
-      <select
-        name="classOption"
-        value={formData.classOption}
-        onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
-        aria-label="Class Option"
-      >
-        <option value="">Select Class Option</option>
-        <option value="jhs_leavers">JHS Leavers (July 8th)</option>
-        <option value="jhs_weekend">JHS Weekend (Soon)</option>
-        <option value="shs_vacation">SHS Vacation (Soon)</option>
-      </select>
-      <button type="submit" className="block mx-auto">
-        Join Now
-      </button>
-    </form>
-  </section>
-));
+const FormSection = React.memo(
+  ({ onSubmit, formData, handleChange, isPopupOpen, setIsPopupOpen }) => (
+    <section className="form-section" aria-label="Join Community Form">
+      <h2 className="text-xl font-semibold mb-4">
+        Ready to Join Our Coding Community?
+      </h2>
+      <form onSubmit={onSubmit} className="space-y-4">
+        <input
+          name="studentName"
+          value={formData.studentName}
+          onChange={handleChange}
+          placeholder="Student's Full Name"
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Student's Full Name"
+        />
+        <input
+          name="parentContact"
+          value={formData.parentContact}
+          onChange={handleChange}
+          placeholder="Parent/Guardian's Contact Number"
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Parent/Guardian's Contact Number"
+        />
+        <input
+          name="parentEmail"
+          value={formData.parentEmail}
+          onChange={handleChange}
+          placeholder="Parent/Guardian's Email"
+          type="email"
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Parent/Guardian's Email"
+        />
+        <input
+          name="age"
+          value={formData.age}
+          onChange={handleChange}
+          placeholder="Student's Age"
+          type="number"
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Student's Age"
+        />
+        <select
+          name="classType"
+          value={formData.classType}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Class Type"
+        >
+          <option value="">Select Class Type</option>
+          <option value="web">Web Development</option>
+          <option value="app">Block-Based Programming</option>
+        </select>
+        <select
+          name="classOption"
+          value={formData.classOption}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+          required
+          aria-label="Class Option"
+        >
+          <option value="">Select Class Option</option>
+          <option value="jhs_leavers">JHS Leavers (July 8th)</option>
+          <option value="jhs_weekend">JHS Weekend (Soon)</option>
+          <option value="shs_vacation">SHS Vacation (Soon)</option>
+        </select>
+        <button type="submit" className="block mx-auto">
+          Join Now
+        </button>
+      </form>
+      {isPopupOpen && (
+        <div
+          className="popup"
+          role="alertdialog"
+          aria-label="Registration Success"
+        >
+          <div className="popup-content">
+            <h3>Congratulations!</h3>
+            <p>
+              You’ve registered for the course. Please send GHS 800 to
+              0555964195 with reference{" "}
+              {formData.studentName.toLowerCase().replace(/\s/g, "")}_
+              {formData.classType}. We’ll confirm manually and send details via
+              email/WhatsApp.
+            </p>
+            <button onClick={() => setIsPopupOpen(false)}>Close</button>
+          </div>
+        </div>
+      )}
+    </section>
+  )
+);
 
-const Learn = () => {
+const Learn = ({ setCurrentPage, currentPage }) => {
   const [formData, setFormData] = useState({
     studentName: "",
     parentContact: "",
@@ -126,6 +147,7 @@ const Learn = () => {
     classType: "",
     classOption: "",
   });
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleChange = useCallback((e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -138,24 +160,12 @@ const Learn = () => {
         .toLowerCase()
         .replace(/\s/g, "")}_${formData.classType}`;
       console.log("Submitting:", { ...formData, reference });
-      // Placeholder for backend submission (update with real URL when live)
-      const response = await fetch("http://127.0.0.1:8000/api/registrations/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          student_name: formData.studentName,
-          parent_contact: formData.parentContact,
-          parent_email: formData.parentEmail,
-          age: formData.age,
-          class_type: formData.classType,
-          class_option: formData.classOption,
-          reference,
-        }),
-      });
-      const data = await response.json();
+      // Simulate local success (no backend)
+      const response = { status: 201 };
+      const data = await response;
       console.log("Response:", response.status, data);
       if (response.status === 201) {
-        alert("Registration successful! Check your email for next steps.");
+        setIsPopupOpen(true);
         setFormData({
           studentName: "",
           parentContact: "",
@@ -165,7 +175,7 @@ const Learn = () => {
           classOption: "",
         });
       } else {
-        alert(`Error: ${data.error || "Please try again."}`);
+        setIsPopupOpen(true); // Show error popup later if needed
       }
     },
     [formData]
@@ -216,8 +226,7 @@ const Learn = () => {
               Our Interactive Coding Platform Launching Soon! Pause, edit, and
               learn coding in real-time. Watch the demo!
             </p>
-            <VideoPlayer videoUrl="https://www.youtube.com/watch?v=yourDemoID" />{" "}
-            {/* Replace with real ID */}
+            <VideoPlayer videoUrl="https://www.youtube.com/watch?v=yourDemoID" />
           </section>
         ),
       },
@@ -245,16 +254,22 @@ const Learn = () => {
             onSubmit={handleSubmit}
             formData={formData}
             handleChange={handleChange}
+            isPopupOpen={isPopupOpen}
+            setIsPopupOpen={setIsPopupOpen}
           />
         ),
       },
     ],
-    [handleSubmit, formData, handleChange]
+    [handleSubmit, formData, handleChange, isPopupOpen, setIsPopupOpen]
   );
 
   return (
     <div className="learn-container">
-      <PageHeader setCurrentPage={() => {}} currentPage="learn" />
+      <PageHeader
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        cartCount={0}
+      />
       {sections.map((section) => (
         <div key={section.id}>{section.content}</div>
       ))}

@@ -1,4 +1,3 @@
-// src/components/PageHeader.js
 import React from "react";
 
 const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
@@ -18,6 +17,8 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
         return "Nice things from me to you";
       case "cart":
         return "Your Cart";
+      case "learn":
+        return "Mr ICT's Young Coders Community"; // New title for Learn page
       default:
         return "Hello, I'm Selase";
     }
@@ -41,7 +42,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
         className={`text-2xl sm:text-3xl font-medium ${mainTitleColorClass()} mb-4 sm:mb-0`}
       >
         <button
-          onClick={() => setCurrentPage("home")}
+          onClick={() => {
+            setCurrentPage("home");
+            window.scrollTo(0, 0);
+          }}
           className="flex items-center p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none"
         >
           {mainTitleText()}
@@ -51,7 +55,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
         <ul className="list-none m-0 p-0 flex flex-col items-end space-y-1 text-base font-medium">
           <li>
             <button
-              onClick={() => setCurrentPage("home")}
+              onClick={() => {
+                setCurrentPage("home");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-flex items-center group ${
                 currentPage === "home" ? "font-semibold" : ""
               }`}
@@ -81,7 +88,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("about")}
+              onClick={() => {
+                setCurrentPage("about");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "about" ? "font-semibold" : ""
               }`}
@@ -91,7 +101,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("projects")}
+              onClick={() => {
+                setCurrentPage("projects");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "projects" ? "font-semibold" : ""
               }`}
@@ -101,7 +114,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("work")}
+              onClick={() => {
+                setCurrentPage("work");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "work" ? "font-semibold" : ""
               }`}
@@ -111,7 +127,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("thoughts")}
+              onClick={() => {
+                setCurrentPage("thoughts");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "thoughts" ? "font-semibold" : ""
               }`}
@@ -121,7 +140,10 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("shop")}
+              onClick={() => {
+                setCurrentPage("shop");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "shop" ? "font-semibold" : ""
               }`}
@@ -131,12 +153,28 @@ const PageHeader = ({ setCurrentPage, currentPage, cartCount }) => {
           </li>
           <li>
             <button
-              onClick={() => setCurrentPage("cart")}
+              onClick={() => {
+                setCurrentPage("cart");
+                window.scrollTo(0, 0);
+              }}
               className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
                 currentPage === "cart" ? "font-semibold" : ""
               }`}
             >
               Cart ({cartCount || 0})
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setCurrentPage("learn");
+                window.scrollTo(0, 0);
+              }}
+              className={`p-0 bg-transparent border-none text-inherit font-inherit cursor-pointer outline-none relative inline-block hover:underline ${
+                currentPage === "learn" ? "font-semibold" : ""
+              }`}
+            >
+              Learn
             </button>
           </li>
         </ul>

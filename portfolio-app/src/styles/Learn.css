@@ -52,6 +52,42 @@
   position: sticky;
   bottom: 0;
 }
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  backdrop-filter: blur(5px); /* Blurs the background */
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it’s above other content */
+}
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  color: #333;
+  z-index: 1001; /* Above the blurred background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+.popup-content button {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background: #4ecdc4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.popup-content button:hover {
+  background: #45b7d1;
+}
 @media (max-width: 600px) {
   .welcome-section img {
     max-width: 100px;

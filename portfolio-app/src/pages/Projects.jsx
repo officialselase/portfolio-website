@@ -14,15 +14,15 @@ const Projects = ({ setCurrentPage, currentPage }) => {
       title: "Mr. ICT",
       description:
         "An interactive coding tutorial platform that lets learners pause a video and experiment with the code being taught—right in the same interface. Built to make digital skills education more accessible, especially in low-resource settings. Simple, fast, and browser-native. No installations. Just watch, edit, run, and learn",
-      demo: "https://www.youtube.com/watch?v=yourDemoID1", // Replace with real ID
-      code: "https://github.com/yourUsername/mr-ict", // Replace with real repo
+      demo: "https://youtu.be/TBdZsbNG8Z0?si=C0XGbGCjqFmPy8Js",
+      code: null,
     },
     {
       title: "SwapWing",
       description:
         "A sharing economy app for bartering goods and services—no money involved. Users list what they have and what they need, then match with others to swap directly.Built to explore alternative economies and reduce waste through trust-based exchange.",
-      demo: null,
-      code: null,
+      demo: "https://youtu.be/lvjfaL-MHiw?si=2EU9zhbYU5rUjfLq",
+      code: "https://github.com/woedy/swapwing",
     },
     {
       title: "Smart Election Ledger System (SELS)",
@@ -50,7 +50,7 @@ const Projects = ({ setCurrentPage, currentPage }) => {
       description:
         "A sharing economy platform for home kitchens. Local cooks can onboard, prepare soups and stews in bulk, and serve nearby households. Built to lower food costs, reduce waste, and support small-scale culinary entrepreneurs.",
       demo: null,
-      code: "https://github.com/yourUsername/weekend-chef", // Replace with real repo
+      code: null, // Replace with real repo
     },
     {
       title: "Messibo",
