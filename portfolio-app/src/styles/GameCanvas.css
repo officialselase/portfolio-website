@@ -1,0 +1,26 @@
+.game-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.tooltip {
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 5px;
+  position: relative;
+}
+canvas {
+  border: 2px solid #4ecdc4;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+}

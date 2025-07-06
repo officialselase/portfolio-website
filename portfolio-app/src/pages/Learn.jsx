@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import PageHeader from "../components/PageHeader";
 import "../styles/Learn.css";
+import GameCanvas from "../components/GameCanvas"; // New import
 
 const VideoPlayer = React.memo(({ videoUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -259,6 +260,10 @@ const Learn = ({ setCurrentPage, currentPage }) => {
           />
         ),
       },
+      {
+        id: "game",
+        content: <GameCanvas />,
+      },
     ],
     [handleSubmit, formData, handleChange, isPopupOpen, setIsPopupOpen]
   );
@@ -273,17 +278,6 @@ const Learn = ({ setCurrentPage, currentPage }) => {
       {sections.map((section) => (
         <div key={section.id}>{section.content}</div>
       ))}
-      <footer className="footer" aria-label="Contact Footer">
-        <p className="text-gray-700">
-          Contact Us: Call/WhatsApp 0555964195 or email{" "}
-          <a
-            href="mailto:officialselase@gmail.com"
-            className="text-blue-500 underline"
-          >
-            officialselase@gmail.com
-          </a>
-        </p>
-      </footer>
     </div>
   );
 };
