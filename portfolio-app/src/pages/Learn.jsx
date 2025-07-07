@@ -2,45 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import PageHeader from "../components/PageHeader";
 import "../styles/Learn.css";
 import GameCanvas from "../components/GameCanvas";
-
-const VideoPlayer = React.memo(({ videoUrl }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  return (
-    <>
-      <img
-        src={`https://img.youtube.com/vi/${videoUrl.split("v=")[1]}/0.jpg`} // Corrected YouTube thumbnail URL format
-        alt="Mr. ICT Demo Thumbnail"
-        className="video-thumbnail"
-        onClick={handleClick}
-        loading="lazy"
-      />
-      {isOpen && (
-        <div
-          className="video-modal"
-          role="dialog"
-          aria-label="Mr. ICT Demo Video"
-        >
-          <iframe
-            src={`https://www.youtube.com/embed/${
-              videoUrl.split("v=")[1]
-            }?autoplay=1`} // Corrected YouTube embed URL format
-            title="Mr. ICT Demo"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-64"
-          />
-          <button onClick={() => setIsOpen(false)}>Close</button>
-        </div>
-      )}
-    </>
-  );
-});
+import VideoPlayer from "../components/VideoPlayer"; // Import the standalone component
 
 const FormSection = React.memo(
   ({ onSubmit, formData, handleChange, isPopupOpen, setIsPopupOpen }) => (
@@ -101,16 +63,13 @@ const FormSection = React.memo(
           </option>
           <option value="react">
             React Frontend Development (Tertiary-graduates) - GHS1500
-          </option>{" "}
-          {/* Changed 'app' to 'react' for clarity */}
+          </option>
           <option value="django">
             Python Django Backend Development (Tertiary-graduates) - GHS1500
-          </option>{" "}
-          {/* Changed 'app' to 'django' for clarity */}
+          </option>
           <option value="flutter">
             Flutter Mobile App Development (Tertiary-graduates) - GHS1500
-          </option>{" "}
-          {/* Changed 'app' to 'flutter' for clarity */}
+          </option>
         </select>
         <select
           name="classOption"
@@ -211,8 +170,9 @@ const Learn = ({ setCurrentPage, currentPage }) => {
         id: "welcome",
         content: (
           <section className="welcome-section" aria-label="Welcome Section">
+            {/* Recommend replacing 'src/assets/under-construction.gif' with a vibrant image as discussed */}
             <img
-              src="/src/assets/under-construction.gif" // Placeholder for recommended image
+              src="https://via.placeholder.com/800x400/ADD8E6/000000?text=Vibrant+Young+Coders+Community" // Placeholder for your recommended image
               alt="Welcome to our Coders Community"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg mb-6" // Added some styling for the image
@@ -269,9 +229,8 @@ const Learn = ({ setCurrentPage, currentPage }) => {
             <p className="text-gray-600 italic mt-2">
               Watch the demo and see how Mr. ICT brings coding to life!
             </p>
-            {/* Note: I've updated the YouTube URL format in VideoPlayer component directly based on common practices */}
-            <VideoPlayer videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />{" "}
-            {/* Replaced generic '2' with a sample YouTube video ID for valid URL structure */}
+            <VideoPlayer videoUrl="https://youtu.be/TBdZsbNG8Z0?si=3jAvE8n0kGs_Ndwg" />{" "}
+            {/* Updated with your URL */}
           </section>
         ),
       },
