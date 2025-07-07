@@ -170,9 +170,8 @@ const Learn = ({ setCurrentPage, currentPage }) => {
         id: "welcome",
         content: (
           <section className="welcome-section" aria-label="Welcome Section">
-            {/* Recommend replacing 'src/assets/under-construction.gif' with a vibrant image as discussed */}
             <img
-              src="https://via.placeholder.com/800x400/ADD8E6/000000?text=Vibrant+Young+Coders+Community" // Placeholder for your recommended image
+              src="src/assets/under-construction.gif" // Placeholder for your recommended image
               alt="Welcome to our Coders Community"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg mb-6" // Added some styling for the image
