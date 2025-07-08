@@ -10,12 +10,14 @@ const ThoughtsPage = ({ setCurrentPage, currentPage }) => {
   }, [currentPage]);
 
   const placeholderImages = [
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=Landscape",
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=Still+Life",
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=Portrait",
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=B%26W",
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=Car",
-    "https://placehold.co/400x300/3D3D3D/A0A0A0?text=People",
+    "src/assets/images/Carespot back.png",
+    "src/assets/images/Carespot logo - IG --1.jpg",
+    "src/assets/images/Carespot logo - IG -.jpg",
+    "src/assets/images/Carespot logo - IG.jpg",
+    "src/assets/images/Carespot logo.png",
+    "src/assets/images/coding class-1.jpg",
+    "src/assets/images/coding class-2.jpg",
+    "src/assets/images/Mr ICT uni(2)(1).jpg",
   ];
 
   return (

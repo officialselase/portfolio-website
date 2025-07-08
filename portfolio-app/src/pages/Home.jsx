@@ -55,7 +55,7 @@ const Home = ({ setCurrentPage, currentPage }) => {
       title: "Wearable neonatal seizure detection system",
       date: "May 2025",
       snippet:
-        "Gotalk exists to make it easy for programs to talk with one another over the internet, like a web app coordinating with a web server, or a bunch of programs dividing work amongst eachother.",
+        "Dr. Sedinam and I set out to investigate and propose an affordable, non-invasive seizure detection system, specifically tuned for neonates, leveraging lightweight machine learning models optimized for wearable microcontrollers. Our proposed system aims to integrate multi-modal sensing – heart rate, motion (accelerometers and gyroscopes) – with AI analytics. Its job? Automatically classify seizure events, differentiate them from normal baby movements, and provide real-time alerts to caregivers.",
     },
     {
       title: "AI has finally come to stay",
